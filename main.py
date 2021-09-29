@@ -38,21 +38,48 @@ def getTLD(url):
     return ('TLD mal formee') 
 
 ###### exercice 04
-def verifTLD(liste, chaine):
-  if chaine in liste :
+def verifTLD(tldOK, tld):
+  if tld in tldOK :
     return True
   else : 
     return False
 
 ###### exercice 05
+def ipVerifFormat (adresseIp) :
 
+  if(adresseIp.count('.') != 3):
+    print('nombre de champs incorrect')
+    return False
+  else :
+    nb = adresseIp.split('.')
+
+    if((int(nb[0]) >= 0 and int(nb[0]) <= 255) and (int(nb[1]) >= 0 and int(nb[1]) <= 255) and (int(nb[2]) >= 0 and int(nb[2]) <= 255) and (int(nb[2]) >= 0 and int(nb[2]) <= 255) and (int(nb[3]) >= 0 and int(nb[3]) <= 255)) :
+      return True
+    else : 
+      print('champ d’adresse incorrect')
+      return False
 
 ###### exercice 06
+def makeTLD(dico):
+  listeTld = []
+  nbLigne = 0
 
+  for url in dico:
+    tld = url.split(",")[0]
+    tld = tld.split(".")[1]
+
+    if tld not in listeTld:
+      listeTld.append(tld)
+      nbLigne += 1
+
+  print("Creation d'une liste de TLD comprenant "+ str(nbLigne) +" entrees")
+  return listeTld
 
 # Zone 2 ## zone pour les classes
 ###### exercice 07
-
+class serveurDNS:
+  def __init__(self, resolDns):
+    self.resolDns = resolDns
 
 ###### exercice 08
 
@@ -92,20 +119,24 @@ def main() :
 
   ###### exercice 05
   print("exercice 05 #######################")
-
+  result = ipVerifFormat ('192.168.1.290') # result de type booléen True/False,adresseIp de type String
 
   ###### exercice 06
   print("exercice 06 #######################")
+  tldOk = makeTLD (resolDns)# tldOk de type liste, dico de type dictionnaire
+  print(tldOk)
+
 
   # Zone 4 ## zone pour les tests de la classe
 
   ###### exercice 07
   print("exercice 07 #######################")
-
+  s = serveurDNS (resolDns)# s de type serveurDns, resolDns de type dictionnaire
+  print(type(s))
 
   ###### exercice 08
   print("exercice 08 #######################")
-
+  #adresseIp = s.resolDNS(url)#adresseIp de type String, url de type String
 
   ###### exercice 09
   print("exercice 09 #######################")
