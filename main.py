@@ -82,6 +82,16 @@ class serveurDNS:
     self.resolDns = resolDns
 
 ###### exercice 08
+  def resolDNS(self,url):
+    print(verifUrl(url))
+    if(verifUrl(url) == False) :
+      print("erreur de format de l'url")
+    else : 
+      print("Url correcte")
+#      if (self.resolDns[url] != None):
+#          print("True")
+#      else:
+#          print ("False")
 
 
 ###### exercice 09
@@ -136,7 +146,8 @@ def main() :
 
   ###### exercice 08
   print("exercice 08 #######################")
-  #adresseIp = s.resolDNS(url)#adresseIp de type String, url de type String
+  adresseIp = s.resolDNS('Leboncoin.org')#adresseIp de type String, url de type String
+  print(adresseIp)
 
   ###### exercice 09
   print("exercice 09 #######################")
